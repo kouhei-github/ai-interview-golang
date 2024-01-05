@@ -1,6 +1,5 @@
-# [Template] Fiber web framework made by Golang Like Express
-Expressに感銘を受け、ExpressライクなGolang製WebフレームワークFiberのアーキテクチャのテンプレート
-
+# [Template] ai-interview-golang
+ai-interviewのバックエンド
 ---
 
 ## 1. 動かすために必要なこと
@@ -36,73 +35,13 @@ docker compose down
 
 ## 3. 必要最低限のエンドポイント
 
-### <span style="color:yellow">POST</span> サインアップ処理
+### <span style="color:green">GET</span> 動画をS3にアップロードする
 ```text
-http://localhost:8080/api/v1/signup
+http://localhost:8080/
 ```
 
-#### Request Body
-```json
-{
-  "email": "sample@sample.com",
-  "password": "sample"
-}
-```
+#### file: (binary)
+| FormData Keys | FormData Value |
+|---------------|----------------|
+| file          | (binaryデータ)    |
 
----
-
-### <span style="color:yellow">POST</span> ログイン処理
-```text
-http://localhost:8080/api/v1/login
-```
-
-#### Request Body
-```json
-{
-    "email": "sample@sample.com",
-    "password": "sample"
-}
-```
-
----
-
-### <span style="color:green">GET</span> ユーザーの情報を全て取得する
-```text
-http://localhost:8080/api/v1/user
-```
-
-#### Request Headers
-| Header Keys    | Header Values        |
-|----------------|----------------------|
-| Authorization  | Bearer `<jwt token>` |
-
-
----
-
-### <span style="color:yellow">POST</span> ヘルスチェック用エンドポイント
-```text
-http://localhost:8080/test
-```
-
-#### Request Body
-```json
-{
-  "userName": "Test User"
-}
-```
-
----
-
-### <span style="color:green">GET</span> パスパラメータの取得
-```text
-http://localhost:8080/path/3
-```
-
----
-
-### <span style="color:green">GET</span> クエリパラメータの取得
-```text
-http://localhost:8080/query?id=56
-```
-
----
