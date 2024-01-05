@@ -1,0 +1,21 @@
+version: '3'
+services:
+  go:
+    image: ai-interview-app-local
+    container_name: ai-interview-app-local
+    build:
+      context: .
+      dockerfile: container/golang/Dockerfile
+    command: ${GOLANG_COMMAND} # buildで確認するときコメントアウト
+    stdin_open: true
+    tty: true
+    working_dir: /app
+    volumes: # buildで確認するときコメントアウト
+      - ./src:/app # buildで確認するときコメントアウト
+    environment:
+      TZ: Asia/Tokyo
+    env_file:
+      - .env
+    ports:
+      - ${GOLANG_PORT}
+      - ${AIR_TOML_PORT}
