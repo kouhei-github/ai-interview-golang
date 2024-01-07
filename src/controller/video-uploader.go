@@ -4,6 +4,7 @@ import (
 	"github.com/gofiber/fiber/v2"
 	"github.com/kouhei-github/ai-interview-golang/utils/amazon"
 	"os"
+	"strings"
 )
 
 // VideoS3UploadHandler 関数は、アップロードされたファイルをディスクに保存するPOSTリクエストを処理する関数である。
@@ -49,8 +50,10 @@ func VideoS3UploadHandler(c *fiber.Ctx) error {
 		if err != nil {
 			return c.Status(200).JSON(map[string]string{"message": err.Error()})
 		}
+		// prefixを指定する
+		s3Prefix := strings.ReplaceAll(file.Filename, "+", "/")
 		// S3にアップロードする
-		if err := s3Service.Upload(file.Filename, fileReader); err != nil {
+		if err := s3Service.Upload(s3Prefix, fileReader); err != nil {
 			return c.Status(200).JSON(map[string]string{"message": err.Error()})
 		}
 	}

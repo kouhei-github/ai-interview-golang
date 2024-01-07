@@ -1,7 +1,6 @@
 package amazon
 
 import (
-	"fmt"
 	"github.com/aws/aws-sdk-go/service/s3/s3manager"
 	"io"
 	"os"
@@ -29,7 +28,6 @@ func (service *S3Service) Upload(fileName string, file io.Reader) error {
 	if err != nil {
 		return err
 	}
-	fmt.Println("Successfully uploaded to", "myBucket")
 	return nil
 }
 
