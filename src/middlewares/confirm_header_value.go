@@ -5,6 +5,9 @@ import (
 	"os"
 )
 
+// CustomHeaderIncludeHandler はリクエストのcompanyヘッダとcommonヘッダを検証します。
+// ヘッダが正しくない場合、JSON メッセージとともに 403 Forbidden レスポンスを返します。
+// ヘッダが正しい場合、次のハンドラを呼び出します。
 func CustomHeaderIncludeHandler(c *fiber.Ctx) error {
 	companyHeader := c.Get("Company-Value")
 	commonHeader := c.Get("Common-Value")
