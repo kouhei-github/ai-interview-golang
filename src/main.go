@@ -41,7 +41,7 @@ func main() {
 
 	// Webサーバー起動時のエラーハンドリング => localhostの時コメントイン必要
 	if os.Getenv("ENVIRONMENT") == "local" {
-		if err := router.FiberApp.Listen(":8080"); err != nil {
+		if err := router.FiberApp.Listen(":80"); err != nil {
 			panic(err)
 		}
 	} else {
