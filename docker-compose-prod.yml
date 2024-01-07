@@ -10,8 +10,3 @@ services:
     tty: true
     environment:
       TZ: Asia/Tokyo
-    env_file:
-      - .env.prod
-    ports:
-      - ${GOLANG_PORT}
-      - ${AIR_TOML_PORT}

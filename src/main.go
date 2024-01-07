@@ -13,6 +13,8 @@ import (
 
 var fiberLambda *fiberadapter.FiberLambda
 
+const MaxBodySize = 500 * 1024 * 1024
+
 // main はアプリケーションのエントリー・ポイントです。
 // Fiberアプリを設定し、ルーターをセットアップする。
 // また、CORSを設定し、Webサーバーを起動するか、環境に応じてAWS Lambdaに接続します。
@@ -21,7 +23,9 @@ var fiberLambda *fiberadapter.FiberLambda
 // ルーターは、許可されるヘッダーとオリジンを指定するCORS設定で構成される。
 // ルートはLoadRouter関数を使用してロードされ、それに応じてWebサーバーまたはLambdaが起動します。
 func main() {
-	app := fiber.New()
+	app := fiber.New(fiber.Config{
+		BodyLimit: MaxBodySize,
+	})
 
 	// ルーターの設定
 	router := &route.Router{FiberApp: app}
